@@ -7,14 +7,11 @@ namespace GymApp.Core.ViewModels
 {
     public class MainViewModel : MvxViewModel
     {
-        private readonly ICalculationService _calculationService;
         private readonly IMvxNavigationService _navigationService;
 
-        public MainViewModel(ICalculationService calculationService, IMvxNavigationService navigationService)
+        public MainViewModel(IMvxNavigationService navigationService)
         {
             _navigationService = navigationService;
-            _calculationService = calculationService;
-
             _navigationService.Navigate<MenuViewModel>();
         }
     }

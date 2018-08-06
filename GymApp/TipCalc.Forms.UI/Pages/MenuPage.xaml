@@ -3,11 +3,48 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:customcontrols="clr-namespace:GymApp.Core.CustomControls;assembly=GymApp.Core"  
     xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:GymApp.Core.ViewModels;assembly=GymApp.Core"
     x:Class="GymApp.Forms.UI.Pages.MenuPage"
-    BackgroundColor="Gray"
+    BackgroundColor="Black"
     Title="Menu">
     <views:MvxContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+
+          <customcontrols:GradientStack Grid.Row="0" Grid.RowSpan="4" Grid.ColumnSpan="2" StartColor="#2196F3" EndColor="#E3F2FD"/>
+            
+
+            <StackLayout Orientation="Vertical" Grid.Row="2" Grid.Column="1" VerticalOptions="StartAndExpand" BackgroundColor="Transparent">
+                <ListView x:Name="MenuItemList" BackgroundColor="Transparent" SeparatorVisibility="None" RowHeight="80" ItemTapped="Handle_ItemTapped" SelectionMode="None" ItemsSource="{Binding MenuItems}" VerticalOptions="CenterAndExpand">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
+                                        <Image HeightRequest="30" WidthRequest="30" BackgroundColor="Green" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Title}" FontSize="Large" VerticalOptions="CenterAndExpand" TextColor="White" HorizontalOptions="FillAndExpand"/>
+                                    </StackLayout>
+                                    
+                                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="White"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                     </ListView.ItemTemplate>
+                    
+                </ListView>
+            </StackLayout>
+            
+        </Grid>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>

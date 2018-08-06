@@ -6,7 +6,7 @@
     <ProjectGuid>{B1E24BD5-C273-427A-A0B9-C6F8A7AE73D6}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
-    <RootNamespace>TipCalc.Forms.iOS</RootNamespace>
+    <RootNamespace>GymApp.Forms.iOS</RootNamespace>
     <AssemblyName>TipCalc.Forms.iOS</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
   </PropertyGroup>
@@ -112,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="CustomRenderers\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -123,6 +124,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="CustomRenderers\GradientStackRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TipCalc.Core\GymApp.Core.csproj">

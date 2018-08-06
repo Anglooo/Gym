@@ -14,5 +14,25 @@ namespace GymApp.Forms.UI.Pages
         {
             InitializeComponent();
         }
+
+        void Handle_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem as GymApp.Core.Model.MenuItem;
+            if(item.NavigateAction != null)
+            {
+                item.NavigateAction.Invoke();
+            }
+        }
+
+        void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+            var item = e.Item as GymApp.Core.Model.MenuItem;
+            if (item.NavigateAction != null)
+            {
+                item.NavigateAction.Invoke();
+            }
+
+            (sender as ListView).SelectedItem = null;
+        }
     }
 }

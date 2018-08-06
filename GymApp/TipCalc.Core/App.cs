@@ -10,7 +10,7 @@ namespace GymApp.Core
     {
         public override void Initialize()
         {
-            Mvx.RegisterType<ICalculationService, CalculationService>();
+            Mvx.RegisterSingleton<IMenuItemService>(new MenuItemService(Mvx.Resolve<IMvxNavigationService>()));
 
             RegisterAppStart<RootViewModel>();
         }
