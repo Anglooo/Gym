@@ -2,6 +2,7 @@
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using GymApp.Core.Services;
+using GymApp.Core.Model;
 
 namespace GymApp.Core.ViewModels
 {
@@ -12,7 +13,15 @@ namespace GymApp.Core.ViewModels
         public LogViewModel(IMvxNavigationService navigationService)
         {
             _navigationService = navigationService;
-            _navigationService.Navigate<MenuViewModel>();
+        }
+
+        public MvxObservableCollection<Excersize> Excersizes
+        {
+            get
+            {
+                //TODO: FIX
+                return null;
+            }
         }
     }
 }

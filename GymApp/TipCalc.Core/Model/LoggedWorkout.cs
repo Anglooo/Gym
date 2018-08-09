@@ -44,5 +44,6 @@ namespace GymApp.Core.Model
         public Excersize LoggedExcersize { get; set; }
         public int LoggedSets { get; set; }
         public List<int> LoggedReps { get; set; }
+        public List<string> LoggedWeight { get; set; }
     }
 }

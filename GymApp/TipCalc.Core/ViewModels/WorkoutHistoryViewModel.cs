@@ -43,10 +43,33 @@ namespace GymApp.Core.ViewModels
             excersize.DefaultRepetitions = defReps;
             excersize.Description = "Testing";
 
+            Excersize excersize2 = new Excersize();
+            excersize2.ID = Guid.NewGuid().ToString();
+            excersize2.Name = "Pullup";
+            excersize2.DefaultSets = 3;
+            List<int> defReps2 = new List<int>();
+            defReps2.Add(8);
+            defReps2.Add(8);
+            defReps2.Add(8);
+            excersize2.DefaultRepetitions = defReps2;
+            excersize2.Description = "Testing";
+
             ExcersizeLog loggedExcersize = new ExcersizeLog();
             loggedExcersize.LoggedExcersize = excersize;
             loggedExcersize.LoggedReps = defReps;
             loggedExcersize.LoggedSets = 3;
+            List<string> LoggedWeights = new List<string>();
+            LoggedWeights.Add("20 Kg");
+            LoggedWeights.Add("20 Kg");
+            LoggedWeights.Add("20 Kg");
+
+            loggedExcersize.LoggedWeight = LoggedWeights;
+
+            ExcersizeLog loggedExcersize2 = new ExcersizeLog();
+            loggedExcersize2.LoggedExcersize = excersize2;
+            loggedExcersize2.LoggedReps = defReps;
+            loggedExcersize2.LoggedSets = 3;
+            loggedExcersize2.LoggedWeight = LoggedWeights;
 
             ExcersizeLogs logs = new ExcersizeLogs();
             logs.Logs = new List<ExcersizeLog>();

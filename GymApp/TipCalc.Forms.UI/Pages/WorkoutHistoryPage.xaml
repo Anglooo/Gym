@@ -12,12 +12,12 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-<!--                        <ViewCell.ContextActions>
+                        <ViewCell.ContextActions>
                             <MenuItem Clicked="Handle_Delete_Clicked" IsDestructive="true" CommandParameter="{Binding .}" 
                                Text="Delete" />
-                            <MenuItem Clicked="Handle_Edit_Clicked" CommandParameter="{Binding .}" 
-                               Text="Edit" />
-                        </ViewCell.ContextActions>  -->
+                <!--            <MenuItem Clicked="Handle_Edit_Clicked" CommandParameter="{Binding .}" 
+                               Text="Edit" />-->
+                        </ViewCell.ContextActions>  
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{Binding WorkoutName}"/>
                             <Label Text="{Binding Started}"/>
