@@ -22,5 +22,15 @@ namespace GymApp.Forms.UI.Pages
         {
             base.OnAppearing();
         }
+
+        async void Handle_Delete_Clicked(object sender, System.EventArgs e)
+        {
+            Xamarin.Forms.MenuItem convertedSender = sender as Xamarin.Forms.MenuItem;
+            LoggedWorkout workoutToDelete = convertedSender.CommandParameter as LoggedWorkout;
+            await App.LoggedWorkoutDatabase.DeleteItemAsync(workoutToDelete);
+
+            WorkoutHistoryViewModel viewModel = this.BindingContext.DataContext as WorkoutHistoryViewModel;
+            await viewModel.RefreshPage();
+        }
     }
 }

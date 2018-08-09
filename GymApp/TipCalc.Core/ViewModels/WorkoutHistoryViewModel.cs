@@ -7,6 +7,7 @@ using GymApp.Core.Repositories;
 using System.Collections.Generic;
 using MvvmCross.Commands;
 using Xamarin.Forms;
+using System;
 
 namespace GymApp.Core.ViewModels
 {
@@ -22,6 +23,40 @@ namespace GymApp.Core.ViewModels
         public async override void ViewAppearing()
         {
             base.ViewAppearing();
+
+            LoggedWorkout workout = new LoggedWorkout();
+            workout.Started = DateTime.Now;
+            workout.Complete = DateTime.Now;
+            workout.ID = Guid.NewGuid().ToString();
+            workout.WorkoutComplete = true;
+            //workout.WorkoutID = "27abfc92-5e6d-4064-b170-7641a009f1d1";
+            workout.WorkoutName = "Push";
+
+            Excersize excersize = new Excersize();
+            excersize.ID = Guid.NewGuid().ToString();
+            excersize.Name = "Pushup";
+            excersize.DefaultSets = 3;
+            List<int> defReps = new List<int>();
+            defReps.Add(8);
+            defReps.Add(8);
+            defReps.Add(8);
+            excersize.DefaultRepetitions = defReps;
+            excersize.Description = "Testing";
+
+            ExcersizeLog loggedExcersize = new ExcersizeLog();
+            loggedExcersize.LoggedExcersize = excersize;
+            loggedExcersize.LoggedReps = defReps;
+            loggedExcersize.LoggedSets = 3;
+
+            ExcersizeLogs logs = new ExcersizeLogs();
+            logs.Logs = new List<ExcersizeLog>();
+            logs.Logs.Add(loggedExcersize);
+
+            workout.LoggedExcersize = logs;
+
+            //await App.LoggedWorkoutDatabase.SaveItemAsync(workout);
+
+            //List<LoggedWorkout> testing = await App.LoggedWorkoutDatabase.GetItemsAsync();
 
             await RefreshPage();
         }
@@ -43,7 +78,7 @@ namespace GymApp.Core.ViewModels
             set
             {
                 _workouts = value;
-                RaisePropertyChanged("LoggedWorkout");
+                RaisePropertyChanged("Workouts");
             }
         }
 

@@ -8,23 +8,24 @@
     x:Class="GymApp.Forms.UI.Pages.WorkoutHistoryPage"
     Title="Workout History">
     <ContentPage.Content>
-        <!--<ListView x:Name="MenuItemList" BackgroundColor="Transparent" ItemsSource="{Binding Workouts}">
+        <ListView x:Name="MenuItemList" BackgroundColor="Transparent" ItemsSource="{Binding Workouts}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <ViewCell.ContextActions>
+<!--                        <ViewCell.ContextActions>
                             <MenuItem Clicked="Handle_Delete_Clicked" IsDestructive="true" CommandParameter="{Binding .}" 
                                Text="Delete" />
                             <MenuItem Clicked="Handle_Edit_Clicked" CommandParameter="{Binding .}" 
                                Text="Edit" />
-                        </ViewCell.ContextActions>  
+                        </ViewCell.ContextActions>  -->
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Name}"/>
-                            <Label Text="{Binding Description}"/>
+                            <Label Text="{Binding WorkoutName}"/>
+                            <Label Text="{Binding Started}"/>
+                            
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
              </ListView.ItemTemplate>
-        </ListView>-->
+        </ListView>
     </ContentPage.Content>
 </views:MvxContentPage>
