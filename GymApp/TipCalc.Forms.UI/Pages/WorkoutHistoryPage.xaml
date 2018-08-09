@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxContentPage x:TypeArguments="viewModels:WorkoutHistoryViewModel"
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:GymApp.Core.ViewModels;assembly=GymApp.Core"
+    x:Class="GymApp.Forms.UI.Pages.WorkoutHistoryPage"
+    Title="Workout History">
+    <ContentPage.Content>
+        <!--<ListView x:Name="MenuItemList" BackgroundColor="Transparent" ItemsSource="{Binding Workouts}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="Handle_Delete_Clicked" IsDestructive="true" CommandParameter="{Binding .}" 
+                               Text="Delete" />
+                            <MenuItem Clicked="Handle_Edit_Clicked" CommandParameter="{Binding .}" 
+                               Text="Edit" />
+                        </ViewCell.ContextActions>  
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Name}"/>
+                            <Label Text="{Binding Description}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+             </ListView.ItemTemplate>
+        </ListView>-->
+    </ContentPage.Content>
+</views:MvxContentPage>

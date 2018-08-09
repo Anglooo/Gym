@@ -7,7 +7,7 @@ namespace GymApp.Core.Model
     {
         public string Title { get; set; }
         public Action NavigateAction { get; set; }
-        public Image MenuImage { get; set; }
+        public FileImageSource MenuImage { get; set; }
         public bool ItemSelected { get; set;}
     }
 }

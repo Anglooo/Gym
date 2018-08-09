@@ -19,5 +19,6 @@
     </ItemGroup>
     <ItemGroup>
       <Compile Remove="Pages\RootPage.cs" />
+      <Compile Remove="Pages\AboutPage.cs" />
     </ItemGroup>
 </Project>

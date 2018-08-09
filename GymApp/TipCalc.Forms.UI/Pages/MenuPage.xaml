@@ -32,7 +32,7 @@
                             <ViewCell>
                                 <StackLayout Orientation="Vertical">
                                     <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
-                                        <Image HeightRequest="30" WidthRequest="30" BackgroundColor="Green" VerticalOptions="Center"/>
+                                        <Image HeightRequest="30" WidthRequest="30" VerticalOptions="Center" Source="{Binding MenuImage}"/>
                                         <Label Text="{Binding Title}" FontSize="Large" VerticalOptions="CenterAndExpand" TextColor="White" HorizontalOptions="FillAndExpand"/>
                                     </StackLayout>
                                     

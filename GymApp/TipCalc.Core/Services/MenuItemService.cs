@@ -18,26 +18,31 @@ namespace GymApp.Core.Services
 
             Core.Model.MenuItem item = new Core.Model.MenuItem();
             item.Title = "Dashboard";
-            item.NavigateAction = NavigateAction<MainViewModel>();
+            item.MenuImage = "dashboard.png";
+            item.NavigateAction = NavigateAction<DashboardViewModel>();
             MenuItemSource.Add(item);
 
             Core.Model.MenuItem itemLog = new Core.Model.MenuItem();
             itemLog.Title = "Log Workout";
-            itemLog.NavigateAction = NavigateAction<MainViewModel>();
+            itemLog.MenuImage = "PlusCircle.png";
+            itemLog.NavigateAction = NavigateAction<LogViewModel>();
             MenuItemSource.Add(itemLog);
 
             Core.Model.MenuItem item3 = new Core.Model.MenuItem();
             item3.Title = "My Workouts";
-            item3.NavigateAction = NavigateAction<MainViewModel>();
+            item3.MenuImage = "WeightKilo.png"; 
+            item3.NavigateAction = NavigateAction<MyWorkoutsViewModel>();
             MenuItemSource.Add(item3);
 
             Core.Model.MenuItem item4 = new Core.Model.MenuItem();
             item4.Title = "Workout Log";
-            item4.NavigateAction = NavigateAction<MainViewModel>();
+            item4.MenuImage = "Calendar.png"; 
+            item4.NavigateAction = NavigateAction<WorkoutHistoryViewModel>();
             MenuItemSource.Add(item4);
 
             Core.Model.MenuItem item2 = new Core.Model.MenuItem();
             item2.Title = "About";
+            item2.MenuImage = "About.png";
             item2.NavigateAction = NavigateAction<AboutViewModel>();
 
             MenuItemSource.Add(item2);

@@ -6,7 +6,8 @@
     xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:GymApp.Core.ViewModels;assembly=GymApp.Core"
     x:Class="GymApp.Forms.UI.Pages.MainView"
-    BackgroundColor="Blue">
+    BackgroundColor="White"
+    Title="Oops">
     <ContentPage.Content>
     </ContentPage.Content>
 </views:MvxContentPage>

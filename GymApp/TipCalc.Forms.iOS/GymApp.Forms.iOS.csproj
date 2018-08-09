@@ -22,7 +22,6 @@
     <MtouchDebug>true</MtouchDebug>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
     <MtouchFastDev>true</MtouchFastDev>
-    <MtouchProfiling>true</MtouchProfiling>
     <IOSDebuggerPort>48226</IOSDebuggerPort>
     <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
@@ -30,6 +29,7 @@
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
     <MtouchVerbosity>
     </MtouchVerbosity>
+<AssemblyName>GymApp.Forms.iOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
@@ -63,6 +63,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchVerbosity>
     </MtouchVerbosity>
+<AssemblyName>GymApp.Forms.iOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -125,6 +126,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="CustomRenderers\GradientStackRenderer.cs" />
+    <Compile Include="CustomRenderers\CustomMvxContentPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TipCalc.Core\GymApp.Core.csproj">
@@ -135,6 +137,15 @@
       <Project>{AE0DF5A8-BE4F-4928-BF36-D386BB88BBA2}</Project>
       <Name>GymApp.Forms.UI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PlusCircle.png" />
+    <BundleResource Include="Resources\WeightKilo.png" />
+    <BundleResource Include="Resources\Calendar.png" />
+    <BundleResource Include="Resources\About.png" />
+    <BundleResource Include="Resources\dashboard.png" />
+    <BundleResource Include="Resources\iosBackButton.png" />
+    <BundleResource Include="Resources\iosbackarrow%402x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
