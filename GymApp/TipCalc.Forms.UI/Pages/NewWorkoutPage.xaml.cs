@@ -5,9 +5,11 @@ using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 using Xamarin.Forms;
 using GymApp.Core.CustomControls;
+using MvvmCross.ViewModels;
 
 namespace GymApp.Forms.UI.Pages
 {
+    [MvxViewFor(typeof(NewWorkoutViewModel))]
     public partial class NewWorkoutPage : CustomMvxContentPage
     {
         public NewWorkoutPage()

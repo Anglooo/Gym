@@ -16,6 +16,9 @@ namespace GymApp.Core
             Mvx.RegisterSingleton<IMenuItemService>(new MenuItemService(Mvx.Resolve<IMvxNavigationService>()));
 
             RegisterAppStart<RootViewModel>();
+
+            //TEST
+            base.Initialize();
         }
 
         static WorkoutDatabase workoutDatabase;

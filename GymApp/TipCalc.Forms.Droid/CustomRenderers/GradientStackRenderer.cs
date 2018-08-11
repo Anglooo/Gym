@@ -4,7 +4,7 @@ using GymApp.Forms.Droid.CustomRenderers;
 using Xamarin.Forms;    
 using Xamarin.Forms.Platform.Android;    
     
-[assembly: ExportRenderer(typeof(GradientColorStack), typeof(GradientStackRenderer))]    
+[assembly: ExportRenderer(typeof(GradientStack), typeof(GradientStackRenderer))]    
     
 namespace GymApp.Forms.Droid.CustomRenderers
 {
@@ -44,7 +44,7 @@ namespace GymApp.Forms.Droid.CustomRenderers
             }
             try
             {
-                var stack = e.NewElement as GradientColorStack;
+                var stack = e.NewElement as GradientStack;
                 this.StartColor = stack.StartColor;
                 this.EndColor = stack.EndColor;
             }

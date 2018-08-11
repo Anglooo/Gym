@@ -1,10 +1,12 @@
 ﻿using System;
+using GymApp.Core.ViewModels;
 using MvvmCross.Forms.Views;
 using MvvmCross.ViewModels;
 using Xamarin.Forms;
 
 namespace GymApp.Core.CustomControls
 {
+    [MvxViewFor(typeof(NewWorkoutViewModel))]
     public class CustomMvxContentPage : MvxContentPage<MvxViewModel>
     {
         /// <summary>
