@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using GymApp.Core.Model;
 using SQLite;
@@ -35,5 +36,22 @@ namespace GymApp.Core.Repositories
         {
             return database.DeleteAsync(item);
         }
+
+        public async Task<LoggedWorkout> GetLatestIncompleteWorkoutAsync()
+        {
+            List<LoggedWorkout> incomplete = await database.Table<LoggedWorkout>().Where(i => i.WorkoutComplete == false).ToListAsync();
+            List<LoggedWorkout> ordered = incomplete.OrderBy(x => x.Started).ToList();
+
+            if(ordered.Count > 0)
+            {
+                return ordered[0];
+            }
+            else
+            {
+                return null;  
+            }
+        }
+
+
     }
 }

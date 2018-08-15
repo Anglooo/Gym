@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customcontrols:CustomMvxContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:customcontrols="clr-namespace:GymApp.Core.CustomControls;assembly=GymApp.Core"
+    xmlns:converters="clr-namespace:GymApp.Core.ValueConverters;assembly=GymApp.Core"    
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:GymApp.Core.ViewModels;assembly=GymApp.Core"
+    x:Class="GymApp.Forms.UI.Pages.LogExcersizePage"
+    BackgroundColor="White"
+    Title="Log Excersize">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BooleanNegatorValueConverter x:Key="BooleanNegator" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">       
+            <StackLayout Orientation="Vertical" IsVisible="{Binding IsNewExcersize}">
+                <Label HorizontalOptions="FillAndExpand" Text="Select a previously used excersize"/>
+                <Picker x:Name="OldExcersizePicker" HorizontalOptions="FillAndExpand" Title="Excersizes" ItemsSource="{Binding OldExcersizes}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding OldExcersizeSelected}"/>
+                <Label HorizontalOptions="FillAndExpand" Text="Or... create a new one"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Entry FontSize="Large" HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsNewExcersize}" Text="{Binding LoggingExcersize.Name}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" IsVisible="{Binding IsNewExcersize,Converter={StaticResource BooleanNegator}}">
+                <Label FontFamily="Bold" Text="Last Time"/>
+                <Label TextColor="Gray" Text="18/06/2018"/>
+                <Label TextColor="Gray" Text="1: 8x10kg 2: 8x10kg 3:10x10kg"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Font="Large" Text="Sets"/>
+                <Button HorizontalOptions="EndAndExpand" Text="New Set" Command="{Binding NewSetCommand}"/>
+            </StackLayout>
+            <ListView SelectionMode="Single" ItemsSource="{Binding LoggingExcersize.LoggedSets, Mode=OneWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding SetNumber}"/>
+                                <Label Text="Reps"/>
+                                <Entry Text="{Binding Reps}"/>
+                                <Label Text="Weight"/>
+                                <Entry Text="{Binding Weight}"/>
+                                <Picker SelectedItem="{Binding denomination}">
+                                    <Picker.Items>
+                                        <x:String>KG</x:String>
+                                        <x:String>lbs</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Complete Excersize" Command="{Binding LogExcersizeCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</customcontrols:CustomMvxContentPage>

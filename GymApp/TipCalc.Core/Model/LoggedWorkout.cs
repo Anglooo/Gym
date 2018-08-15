@@ -14,11 +14,11 @@ namespace GymApp.Core.Model
         public string LoggedExcersizesString { get; set; }
 
         [Ignore]
-        public ExcersizeLogs LoggedExcersize
+        public List<LoggedExcersize> LoggedExcersizes
         {
             get
             {
-                return JsonConvert.DeserializeObject<ExcersizeLogs>(LoggedExcersizesString);
+                return JsonConvert.DeserializeObject<List<LoggedExcersize>>(LoggedExcersizesString);
             }
             set
             {
@@ -41,7 +41,7 @@ namespace GymApp.Core.Model
 
     public class ExcersizeLog
     {
-        public Excersize LoggedExcersize { get; set; }
+        public LoggedExcersize LoggedExcersize { get; set; }
         public int LoggedSets { get; set; }
         public List<int> LoggedReps { get; set; }
         public List<string> LoggedWeight { get; set; }

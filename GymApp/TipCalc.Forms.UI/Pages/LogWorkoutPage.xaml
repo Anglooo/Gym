@@ -3,6 +3,8 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:customcontrols="clr-namespace:GymApp.Core.CustomControls;assembly=GymApp.Core" 
+    xmlns:converters="clr-namespace:GymApp.Core.ValueConverters;assembly=GymApp.Core"    
     xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:GymApp.Core.ViewModels;assembly=GymApp.Core"
     x:Class="GymApp.Forms.UI.Pages.LogWorkoutPage"
@@ -10,8 +12,32 @@
     Title="Log New Workout">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-            <Entry Placeholder="Name"/>
-            
+            <Label Text="Date: 11/08/2018"/>
+            <Label Text="Time: 09:35"/>
+
+            <Picker x:Name="WorkoutPicker" Title="Workouts" ItemsSource="{Binding Workouts}" SelectedIndex="{Binding PickerSelectedIndex}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedWorkout}"/>
+
+                <ListView IsVisible="{Binding ExcersizeListShown}" SelectionMode="Single" ItemsSource="{Binding Excersizes, Mode=OneWay}" RowHeight="-1" HasUnevenRows="true" ItemSelected="Handle_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>                                
+                                <ViewCell.ContextActions>
+                                    <MenuItem Clicked="Handle_Delete_Clicked" IsDestructive="true"
+                                       Text="Delete" />
+ <!--                                   <MenuItem Clicked="Handle_Edit_Clicked" CommandParameter="{Binding .}" 
+                                       Text="Edit" />-->
+                                 </ViewCell.ContextActions>  
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Name}" TextColor="Black"/>
+                                    <Label Text="Complete" IsVisible="{Binding Complete}" HorizontalOptions="EndAndExpand" TextColor="Black"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                     </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Add New Excersize" IsVisible="{Binding ExcersizeListShown}" Command="{Binding NewExcersize}" />
+
+            <Button Text="Complete Workout" VerticalOptions="EndAndExpand" Command="{Binding SaveWorkout}"/>
         </StackLayout>
     </ContentPage.Content>
 </views:MvxContentPage>

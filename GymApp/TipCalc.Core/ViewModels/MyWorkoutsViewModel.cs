@@ -22,8 +22,13 @@ namespace GymApp.Core.ViewModels
         public async override void ViewAppearing()
         {
             base.ViewAppearing();
+         }
 
+        public override async Task Initialize()
+        {
             await RefreshPage();
+            //return await base.Initialize();
+
         }
 
         public async Task<bool> RefreshPage()

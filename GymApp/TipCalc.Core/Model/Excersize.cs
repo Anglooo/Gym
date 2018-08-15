@@ -1,32 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
+using MvvmCross.ViewModels;
 using Newtonsoft.Json;
 using SQLite;
 
 namespace GymApp.Core.Model
 {
-    public class Excersize
+    public class Excersize : MvxNotifyPropertyChanged
     {
         public string ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string DefaultRepetitionsString { get; set;}
-        public int DefaultSets { get; set; }
+
+        public string LastCompleteExcersizeID { get; set; }
+
+        public string DefaultSetsString { get; set; }
 
         [Ignore]
-        public List<int> DefaultRepetitions
+        public List<Set> DefaultSets
         {
             get
             {
-                return JsonConvert.DeserializeObject<List<int>>(DefaultRepetitionsString);
+                return JsonConvert.DeserializeObject<List<Set>>(DefaultSetsString);
             }
             set
             {
                 if (value != null)
                 {
-                    DefaultRepetitionsString = JsonConvert.SerializeObject(value);
+                    DefaultSetsString = JsonConvert.SerializeObject(value);
                 }
             }
         }
+    }
+
+    public class Set
+    {
+        public int SetNumber { get; set; }
+        public int Reps { get; set; }
+        public int Weight { get; set; }
+        public Denomination denomination { get; set; }
+    }
+
+    public enum Denomination
+    {
+        KG,lbs
     }
 }

@@ -14,5 +14,6 @@
       <Folder Include="Model\" />
       <Folder Include="CustomControls\" />
       <Folder Include="Repositories\" />
+      <Folder Include="ValueConverters\" />
     </ItemGroup>
 </Project>
