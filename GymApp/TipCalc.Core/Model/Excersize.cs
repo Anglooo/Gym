@@ -49,6 +49,14 @@ namespace GymApp.Core.Model
         public int Reps { get; set; }
         public int Weight { get; set; }
         public Denomination denomination { get; set; }
+
+        public string SetOverview
+        {
+            get
+            {
+                return Reps.ToString() + "x" + Weight.ToString() + denomination.ToString();
+            }
+        }
     }
 
     public enum Denomination

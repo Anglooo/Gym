@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MvvmCross.ViewModels;
+using SQLite;
 
 namespace GymApp.Core.Model
 {
@@ -15,6 +16,20 @@ namespace GymApp.Core.Model
             this.Name = excersize.Name;
             this.Description = excersize.Description;
             this.LoggedSets = new MvxObservableCollection<Set>(excersize.DefaultSets);
+        }
+
+        [Ignore]
+        public string LoggedOverview
+        {
+            get
+            {
+                string builder = "";
+                foreach (var item in LoggedSets)
+                {
+                    builder = builder + item.SetOverview + ",";
+                }
+                return builder;
+            }
         }
 
         public bool Complete { get; set; }

@@ -17,7 +17,7 @@
 
             <Picker x:Name="WorkoutPicker" Title="Workouts" ItemsSource="{Binding Workouts}" SelectedIndex="{Binding PickerSelectedIndex}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedWorkout}"/>
 
-                <ListView IsVisible="{Binding ExcersizeListShown}" SelectionMode="Single" ItemsSource="{Binding Excersizes, Mode=OneWay}" RowHeight="-1" HasUnevenRows="true" ItemSelected="Handle_ItemSelected">
+                <ListView IsVisible="{Binding ExcersizeListShown}" SelectionMode="Single" ItemsSource="{Binding Excersizes}" RowHeight="80" ItemSelected="Handle_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>                                
@@ -26,11 +26,14 @@
                                        Text="Delete" />
  <!--                                   <MenuItem Clicked="Handle_Edit_Clicked" CommandParameter="{Binding .}" 
                                        Text="Edit" />-->
-                                 </ViewCell.ContextActions>  
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Name}" TextColor="Black"/>
-                                    <Label Text="Complete" IsVisible="{Binding Complete}" HorizontalOptions="EndAndExpand" TextColor="Black"/>
-                                </StackLayout>
+                                </ViewCell.ContextActions>
+                                <Frame Margin="5" CornerRadius="10" HasShadow="true" HeightRequest="40">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Name}" TextColor="Black"/>
+                                        <Label Text="{Binding LoggedOverview}" IsVisible="{Binding Complete}" TextColor="Black"/>
+                                        <Label Text="C" IsVisible="{Binding Complete}" HorizontalOptions="EndAndExpand" TextColor="Black"/>
+                                    </StackLayout>
+                                </Frame>
                             </ViewCell>
                         </DataTemplate>
                      </ListView.ItemTemplate>
