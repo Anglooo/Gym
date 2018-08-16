@@ -67,8 +67,8 @@ namespace GymApp.Core.ViewModels
             };
 
             Excersizes = new MvxObservableCollection<LoggedExcersize>();
-            Excersizes.Add(logged1);
-            Excersizes.Add(logged2);
+            //Excersizes.Add(logged1);
+            //Excersizes.Add(logged2);
 
             //App.ExcersizeDatabase.SaveItemAsync(logged1 as Excersize);
             //App.ExcersizeDatabase.SaveItemAsync(logged2 as Excersize);
@@ -130,6 +130,11 @@ namespace GymApp.Core.ViewModels
             if(PickerSelectedIndex != -1)
             {
                 LoggingWorkout.WorkoutName = SelectedWorkout.Name;
+                Excersizes = new MvxObservableCollection<LoggedExcersize>();
+                foreach (var item in SelectedWorkout.DefaultExcersizes)
+                {
+                    Excersizes.Add(new LoggedExcersize(item));
+                }
                 ExcersizeListShown = true;
             }
         }

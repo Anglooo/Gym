@@ -44,7 +44,7 @@ namespace GymApp.Core.Repositories
 
             if(ordered.Count > 0)
             {
-                return ordered[0];
+                return ordered.Last();
             }
             else
             {

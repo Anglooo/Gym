@@ -21,7 +21,7 @@
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{Binding WorkoutName}"/>
                             <Label Text="{Binding Started}"/>
-                            
+                            <Label Text="{Binding WorkoutComplete}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

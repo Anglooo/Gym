@@ -126,7 +126,7 @@ namespace GymApp.Core.ViewModels
                     LoggingExcersize.ID = Guid.NewGuid().ToString();
                     LoggingExcersize.DefaultSets = LoggingExcersize.LoggedSets.ToList();
 
-                    await App.ExcersizeDatabase.SaveItemAsync(LoggingExcersize as Excersize);
+                    await App.ExcersizeDatabase.SaveLoggedAsExcersizeAsync(LoggingExcersize);
                 }
 
                 await _navigationService.Close(this, LoggingExcersize);

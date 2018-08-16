@@ -28,7 +28,12 @@ namespace GymApp.Core.ViewModels
         {
             await RefreshPage();
             //return await base.Initialize();
+        }
 
+        public override void ViewAppeared()
+        {
+            base.ViewAppeared();
+            RefreshPage();
         }
 
         public async Task<bool> RefreshPage()
@@ -66,7 +71,7 @@ namespace GymApp.Core.ViewModels
         public async Task<bool> EditWorkout(Workout editWorkout)
         {
             await _navigationService.Navigate<NewWorkoutViewModel, Workout>(editWorkout);
-
+            await RefreshPage();
             return true;
         }
 

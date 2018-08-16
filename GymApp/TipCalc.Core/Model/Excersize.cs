@@ -8,6 +8,16 @@ namespace GymApp.Core.Model
 {
     public class Excersize : MvxNotifyPropertyChanged
     {
+        public Excersize()
+        {}
+
+        public Excersize(LoggedExcersize logged)
+        {
+            this.ID = Guid.NewGuid().ToString();
+            this.Name = logged.Name;
+            this.DefaultSets = logged.DefaultSets;
+        }
+
         public string ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

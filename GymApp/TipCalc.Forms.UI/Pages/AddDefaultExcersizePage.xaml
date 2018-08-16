@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customcontrols:CustomMvxContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:customcontrols="clr-namespace:GymApp.Core.CustomControls;assembly=GymApp.Core"
+    xmlns:converters="clr-namespace:GymApp.Core.ValueConverters;assembly=GymApp.Core"    
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:GymApp.Core.ViewModels;assembly=GymApp.Core"
+    x:Class="GymApp.Forms.UI.Pages.AddDefaultExcersizePage"
+    BackgroundColor="White"
+    Title="New Default Excersize">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BooleanNegatorValueConverter x:Key="BooleanNegator" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">       
+            
+            <StackLayout Orientation="Vertical" Padding="10">
+                <Entry FontSize="Large" Placeholder="Excersize Name" HorizontalOptions="FillAndExpand" Text="{Binding DefaultExcersize.Name}"/>
+                <Entry FontSize="Large" Placeholder="Excersize Description" HorizontalOptions="FillAndExpand" Text="{Binding DefaultExcersize.Description}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Font="Large" Text="Sets"/>
+                <Button HorizontalOptions="EndAndExpand" Text="New Set" Command="{Binding NewSetCommand}"/>
+            </StackLayout>
+            <ListView SelectionMode="Single" SeparatorVisibility="None" RowHeight="100" ItemsSource="{Binding DefaultSets, Mode=OneWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Margin="5" CornerRadius="10" HasShadow="true" HeightRequest="40">
+                                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                    <Label Text="{Binding SetNumber}"/>
+                                    <Label Text="Reps"/>
+                                    <Entry WidthRequest="40" Keyboard="Numeric" Text="{Binding Reps}"/>
+                                    <Label Text="Weight"/>
+                                    <Entry WidthRequest="40" Keyboard="Numeric" Text="{Binding Weight}"/>
+                                    <Picker WidthRequest="70" Title="Pick" SelectedItem="{Binding denomination}">
+                                        <Picker.Items>
+                                            <x:String>KG</x:String>
+                                            <x:String>lbs</x:String>
+                                        </Picker.Items>
+                                    </Picker>
+                                </StackLayout>
+                            </Frame>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Complete Excersize" Command="{Binding LogExcersizeCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</customcontrols:CustomMvxContentPage>

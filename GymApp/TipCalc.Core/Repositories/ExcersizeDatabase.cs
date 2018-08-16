@@ -28,7 +28,16 @@ namespace GymApp.Core.Repositories
 
         public Task<int> SaveItemAsync(Excersize item)
         {
+            
+            //Excersize excersize = (Excersize)item;
             return database.InsertOrReplaceAsync(item);
+        }
+
+        public Task<int> SaveLoggedAsExcersizeAsync(LoggedExcersize item)
+        {
+            Excersize excersize = new Excersize(item);
+            //Excersize excersize = (Excersize)item;
+            return database.InsertOrReplaceAsync(excersize);
         }
 
         public Task<int> DeleteItemAsync(Excersize item)

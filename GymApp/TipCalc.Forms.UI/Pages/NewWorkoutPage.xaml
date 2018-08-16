@@ -9,11 +9,28 @@
     x:Class="GymApp.Forms.UI.Pages.NewWorkoutPage"
     Title="New Workout">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Vertical" Margin="10">
             <Entry Placeholder="Name" Text="{Binding WorkoutName}" HorizontalOptions="FillAndExpand"/>
             <Entry Placeholder="Description" Text="{Binding WorkoutDescription}" HorizontalOptions="FillAndExpand"/>
+            <ListView SelectionMode="Single" ItemsSource="{Binding DefaultExcersizes, Mode=OneWay}" RowHeight="-1" HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>                                
+                            <ViewCell.ContextActions>
+                                <MenuItem IsDestructive="true"
+                                   Text="Delete" />
+<!--                                   <MenuItem Clicked="Handle_Edit_Clicked" CommandParameter="{Binding .}" 
+                                   Text="Edit" />-->
+                             </ViewCell.ContextActions>  
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Name}" TextColor="Black"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                 </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Add New Default Excersize" Command="{Binding NewExcersize}" />
             <Button Command="{Binding SaveWorkout}" Text="Save" FontSize="Large" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
         </StackLayout>
-        
     </ContentPage.Content>
 </customcontrols:CustomMvxContentPage>

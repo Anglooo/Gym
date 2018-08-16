@@ -6,6 +6,7 @@ using GymApp.Core.Model;
 using Xamarin.Forms;
 using MvvmCross.Commands;
 using System;
+using System.Linq;
 
 namespace GymApp.Core.ViewModels
 {
@@ -23,6 +24,15 @@ namespace GymApp.Core.ViewModels
             WorkoutName = parameter.Name;
             WorkoutDescription = parameter.Description;
             WorkoutID = parameter.ID;
+
+            if (parameter.DefaultExcersizesString == null)
+            {
+                DefaultExcersizes = new MvxObservableCollection<Excersize>();
+            }
+            else
+            {
+                DefaultExcersizes = new MvxObservableCollection<Excersize>(parameter.DefaultExcersizes);
+            }
         }
 
         private string _workoutName;
@@ -53,6 +63,34 @@ namespace GymApp.Core.ViewModels
             }
         }
 
+        public bool _excersizeListShown;
+        public bool ExcersizeListShown
+        {
+            get
+            {
+                return _excersizeListShown;
+            }
+            set
+            {
+                _excersizeListShown = value;
+                RaisePropertyChanged("ExcersizeListShown");
+            }
+        }
+
+        public MvxObservableCollection<Excersize> _defaultExcersizes;
+        public MvxObservableCollection<Excersize> DefaultExcersizes
+        {
+            get
+            {
+                return _defaultExcersizes;
+            }
+            set
+            {
+                _defaultExcersizes = value;
+                RaisePropertyChanged("DefaultExcersizes");
+            }
+        }
+
         private string WorkoutID;
 
         public MvxAsyncCommand NewExcersize
@@ -61,7 +99,11 @@ namespace GymApp.Core.ViewModels
             {
                 return new MvxAsyncCommand(async () =>
                 {
-
+                    Excersize newDefaultExcersize = await _navigationService.Navigate<AddDefaultExcersizeViewModel, Excersize, Excersize>(new Excersize());
+                    if (newDefaultExcersize != null)
+                    {
+                        DefaultExcersizes.Add(newDefaultExcersize);
+                    }
                 });
             }
         }
@@ -86,6 +128,7 @@ namespace GymApp.Core.ViewModels
 
                         toSave.Name = WorkoutName;
                         toSave.Description = WorkoutDescription;
+                        toSave.DefaultExcersizes = DefaultExcersizes.ToList();
 
                         await App.WorkoutDatabase.SaveItemAsync(toSave);
                         await _navigationService.Close(this);

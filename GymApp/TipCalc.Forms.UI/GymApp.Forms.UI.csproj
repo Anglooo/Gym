@@ -20,5 +20,6 @@
     <ItemGroup>
       <Compile Remove="Pages\RootPage.cs" />
       <Compile Remove="Pages\AboutPage.cs" />
+      <Compile Remove="Pages\AddNewDefaultExcersizePage.cs" />
     </ItemGroup>
 </Project>
